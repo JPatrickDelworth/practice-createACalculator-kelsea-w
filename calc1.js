@@ -1,46 +1,137 @@
-//This is supposed to be a calculator
-
+//This is supposed to be a' calculator
+const readline = require('readline-sync');
 
 
 //Absolute Value Caluclation - Given any number, return its absolute value.
 
 function absoluteValue(num){
-    return Math.abs(num);
+    console.log(`\nThe absolute value of your number is: ${Math.abs(num)}.`);
+    return;
 }
 
 //Power Caluclation -  Calculate and return the value of a base raised to a specific power.
 
 function powerCalculation(base, exponent){
-    return Math.pow(base, exponent);
+    console.log(`\nBase ${base} to the power of ${exponent} is ${Math.pow(base, exponent)}.`);
+    return;
 }
 
 //Square Root Calculation - Calculate the square root of a number.
 
 function rootCalculation(num){
-    return Math.sqrt(num)
+    console.log(`\nThe square root of ${num} equals ${Math.sqrt(num)}.`);
+    return;
 }
 
 //Maximum and Mimimun Finder - From a given set of numbers, determine the largest and smallest values.
 
-function maxAndMin(num1, num2){
-    console.log(`The Max Value is: ${Math.max(num1, num2)}`);
-    console.log(`The Min Value is: ${Math.min(num1, num2)}`);
-    return(0);
+function maxAndMin(arr){
+    let maxNum = arr[0];
+    for (let i = 1; i < arr.length; i++){
+        if (arr[i] > maxNum) {
+            maxNum = arr[i];
+        }
+    }
+    console.log(`\nThe largest number in the array is: ${maxNum}`);
+
+    let minNum = arr[0];
+    for (let i = 1; i < arr.length; i++){
+        if (arr[i] < minNum) {
+            minNum = arr[i];
+        }
+    }
+    console.log(`\nThe smallest number in the array is: ${minNum}`);
+
+    //console.log(`The Max Value is: ${Math.max(num1, num2, num3, num4)}`);
+    //console.log(`The Min Value is: ${Math.min(num1, num2, num3, num4)}`);
+    return;
 }
 
 //Random Number Generator: Generate a random integer within a specified range.
 function randomNumber(max, min){
     let randomNum = Math.random()*(max - min) + min;
-    return randomNum.toFixed(0);
+    console.log(`\nYour random number is: ${randomNum.toFixed(0)}`);
+    return;
 }
 
 //Custom Rounding: Round a number to a specified number of decimal places.
 
-function customRounding(num, places){
-    let roundedNumber = Math.round(num * 10000)/10000;
-    return roundedNumber;
+function customRounding(num){
+    let roundedNumber = Math.round(num * 100)/100;
+    console.log(`\nYour number rounded to two decimal places is: ${roundedNumber}`);
+    return;
 }
 
+let choice;
+
+console.log(`\nWelcome to our calculator! Here you can choose from several different functions.
+    Which function would you like to perform? enter the corresponding number: \n`)
+
+do {
+    console.log(`\n\t1. Calculate an Absolute Value
+        2. Calculate a Power
+        3. Find the Square Root of a Number
+        4. Find the Maximum and Minimum Values in a List of Numbers
+        5. Generate a Random Number Between a Specified Minimum and Maximum Value
+        6. Round a Decimal to Two Decimal Places`);
+
+    choice = readline.question("\nEnter Your Choice: ");
+    choice = Number(choice);
+
+    if (choice === 1){
+        console.log("\nPlease enter the number you would like to find the absolute value of.");
+        let absValue = readline.question("\n Number: ");
+        absValue = Number(absValue);
+        absoluteValue(absValue);
+    }
+    else if (choice === 2) {
+        console.log("\nPlease enter the base number.");
+        let baseNum = readline.question("\n Number: ");
+        baseNum = Number(baseNum);
+        console.log("\nPlease enter the number of the exponent.");
+        let exponent = readline.question("\nExponent: ");
+        exponent = Number(exponent);
+        powerCalculation(baseNum, exponent);
+    }
+    else if (choice === 3){
+        console.log("\nPlease enter the number you would like to find the square root of.");
+        let squareBase = readline.question("\nNumber: ");
+        squareBase = Number(squareBase);
+        rootCalculation(squareBase);
+    }
+    else if (choice === 4){
+        console.log(`\n Please enter numbers separated by a comma.`)
+        let numString = readline.question("\nArray: ");
+        let numArray = numString.split(", ");
+        for(char of numArray) {
+            Number(numArray[char]);
+        }
+        maxAndMin(numArray);
+        
+    }
+    else if (choice === 5){
+        console.log(`\n\tLet's generate a random number from a range. 
+            Please enter the minimum and maximum range values.`);
+        let minRange = readline.question("\nMinimum Range Value: ");
+        minRange = Number(minRange);
+        let maxRange = readline.question("\nMaximum Range Value: ");
+        maxRange = Number(maxRange);
+        randomNumber(maxRange, minRange);
+    }
+    else if (choice === 6){
+        console.log("\nPlease enter the decimal youb would like to round to two decimal places.");
+        let decimal = readline.question("\nDecimal: ");
+        decimal = Number(decimal);
+        customRounding(decimal);
+    }
+    else {
+        console.log("\nInvalid input detected. Please try again.");
+    }
+
+
+} while (choice <= 0 || choice >= 7)
+
+    /*
 console.log(absoluteValue(42));
 console.log(absoluteValue(-42));
 
@@ -56,7 +147,7 @@ console.log(randomNumber(300, 1));
 
 console.log(customRounding(5.60293802384092834098234));
 
-
+*/
 /// User needs to be able to
 // Select operations
 // input required values
