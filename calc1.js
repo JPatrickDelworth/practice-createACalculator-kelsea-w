@@ -1,6 +1,9 @@
-//This is supposed to be a' calculator
+
+//CALCULATOR
+
 const readline = require('readline-sync');
 
+//MATHEMATICAL FUNCTIONS
 
 //Absolute Value Caluclation - Given any number, return its absolute value.
 
@@ -41,9 +44,6 @@ function maxAndMin(arr){
         }
     }
     console.log(`\nThe smallest number in the array is: ${minNum}`);
-
-    //console.log(`The Max Value is: ${Math.max(num1, num2, num3, num4)}`);
-    //console.log(`The Min Value is: ${Math.min(num1, num2, num3, num4)}`);
     return;
 }
 
@@ -61,6 +61,9 @@ function customRounding(num){
     console.log(`\nYour number rounded to two decimal places is: ${roundedNumber}`);
     return;
 }
+
+
+//USER INPUT
 
 let choice;
 
@@ -130,29 +133,3 @@ do {
 
 
 } while (choice <= 0 || choice >= 7)
-
-    /*
-console.log(absoluteValue(42));
-console.log(absoluteValue(-42));
-
-console.log(powerCalculation(2,2))
-console.log(powerCalculation(10,10))
-
-console.log(rootCalculation(500));
-
-maxAndMin(25, 400);
-
-
-console.log(randomNumber(300, 1));
-
-console.log(customRounding(5.60293802384092834098234));
-
-*/
-/// User needs to be able to
-// Select operations
-// input required values
-// Calculator needs to provide options to select, prompt input, and provide results
-
-//use if statements to prompt user like a phone menu to select the desired function
-//then prompt the user for inputs before calling the desired function
-//once provided, the function is called OR returns an error that input was not valid for function
